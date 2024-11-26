@@ -3,7 +3,8 @@ const firebaseAdmin = require('firebase-admin');
 const bodyParser = require('body-parser');
 
 // Initialisation de Firebase Admin SDK
-const serviceAccount = require("./config/macleprive.json"); // Ton fichier de clé Firebase
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
   databaseURL: "https://apiproject-e35da-default-rtdb.firebaseio.com",
